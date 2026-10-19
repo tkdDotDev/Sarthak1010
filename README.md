@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # SEPM Project – Part 1.2
+=======
+# SEPM Project 1.1 and 1.2
+>>>>>>> myremote/main
 
 ## GitHub Actions Solidity Compilation Pipeline
 
