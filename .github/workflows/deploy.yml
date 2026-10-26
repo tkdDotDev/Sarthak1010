@@ -47,8 +47,7 @@ jobs:
               exit 1
             }
 
-            # 4. Deploy using standard Node.js
-      - name: Deploy to Sepolia
+                  - name: Deploy to Sepolia
         run: node scripts/deploy.js
         env:
           SEPOLIA_RPC_URL: ${{ secrets.SEPOLIA_RPC_URL }}
