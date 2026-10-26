@@ -7,7 +7,7 @@ jobs:
   deploy:
     name: Compile and Deploy
     runs-on: ubuntu-latest
-    environment: Testnet
+    environment: VaultApp
 
     steps:
       - name: Checkout repository
@@ -43,8 +43,8 @@ jobs:
             || { echo "::error::Solidity compilation failed"; jq '.errors' build/output.json; exit 1; }
 
       # 4. Deploy using standard Node.js (bypasses Hardhat)
-      - name: Deploy to Sepolia
+            - name: Deploy to Sepolia
         run: node scripts/deploy.js
         env:
           SEPOLIA_RPC_URL: ${{ secrets.SEPOLIA_RPC_URL }}
-          SEPOLIA_PRIVATE_KEY: ${{ secrets.SEPOLIA_PRIVATE_KEY }}
+          SEPOLIA_PRIVATE_KEY: ${{ secrets.DEPLOYER_PRIVATE_KEY }}
