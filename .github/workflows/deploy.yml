@@ -36,14 +36,19 @@ jobs:
             --standard-json --base-path /app --include-path /app/node_modules \
             < build/input.json > build/output.json
 
-      # 3. Check for compilation errors
+            # 3. Check for compilation errors
       - name: Fail on compiler errors
+        shell: bash
         run: |
           jq -e '[.errors[]? | select(.severity == "error")] | length == 0' build/output.json \
-            || { echo "::error::Solidity compilation failed"; jq '.errors' build/output.json; exit 1; }
+            || {
+              echo "::error::Solidity compilation failed"
+              jq '.errors' build/output.json
+              exit 1
+            }
 
-      # 4. Deploy using standard Node.js (bypasses Hardhat)
-            - name: Deploy to Sepolia
+            # 4. Deploy using standard Node.js
+      - name: Deploy to Sepolia
         run: node scripts/deploy.js
         env:
           SEPOLIA_RPC_URL: ${{ secrets.SEPOLIA_RPC_URL }}
