@@ -17,7 +17,7 @@ async function main() {
   const output = JSON.parse(fs.readFileSync(outputPath, "utf8"));
 
   // 2. Extract the ABI and Bytecode for YieldVault
-  const contractName = "YieldVault";
+  const contractName = "vault";
   const sourceFile = Object.keys(output.contracts).find((key) =>
     key.includes(contractName),
   );
