@@ -3,5 +3,7 @@ pragma solidity ^0.8.20;
 
 contract HelloWorld {
     string public greet = "Hello World!";
-    contructor ()
+    contructor (string memory _greet) {
+        greet = _greet;
+    }
 }
